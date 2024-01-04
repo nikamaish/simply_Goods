@@ -1,3 +1,5 @@
+// Navbar.js
+
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faUserPen, faCartArrowDown, faHouseUser } from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +9,7 @@ import products from '../categoriesData/CategoriesData'; // Import your product 
 
 export default function Navbar({ menuOpen, setMenuOpen }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [isDropdownVisible, setDropdownVisible] = useState(false); // New state for dropdown visibility
   const navigate = useNavigate();
 
   const handleSearchChange = (e) => {
@@ -22,12 +25,18 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
       console.log("Please enter a search query.");
       return;
     }
-  
+
+    // const updatedHistory = [...searchHistory, searchQuery];
+    // setSearchHistory(updatedHistory);
+
+    // Save updated search history to localStorage
+    // localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
+
     // Filter products based on the search query
     const searchResults = products.filter(product =>
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  
+
     // Navigate to the MainProduct page with the product ID and name as parameters
     if (searchResults.length > 0) {
       const firstResult = searchResults[0];
@@ -37,7 +46,6 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
       console.log("No matching products found.");
     }
   };
-  
 
   return (
     <div className={"topbar " + (menuOpen && "active")}>
@@ -46,16 +54,28 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
           <div className="logo">
             <Link to='/'>SimplyGoods</Link>
           </div>
-          <form onSubmit={handleSearchSubmit} className="itemContainer">
+          <form
+            onSubmit={handleSearchSubmit}
+            className="itemContainer"
+            onFocus={() => setDropdownVisible(true)} // Show dropdown on focus
+            onBlur={() => setDropdownVisible(false)} // Hide dropdown on blur
+          >
             <input
               type="search"
               placeholder='Search Products'
               value={searchQuery}
               onChange={handleSearchChange}
             />
-             <button onClick={handleSearchSubmit} className='searchButton'>
-          <FontAwesomeIcon icon={faSearch} size='lg' />
-        </button>
+            <button type="submit" className='searchButton'>
+              <FontAwesomeIcon icon={faSearch} size='lg' />
+            </button>
+
+            {isDropdownVisible && (
+              <div className="dropdown-container">
+                {/* Your dropdown content goes here */}
+                <p>Dropdown Content Here</p>
+              </div>
+            )}
           </form>
           <div className="itemContainer">
             <Link to='/'>
