@@ -48,6 +48,8 @@
     margin: 0 2vh; /* Adjust the margin for the container */
     cursor: pointer;
 
+
+
     @media only screen and (max-width: 930px) {
       display: none;
     }
@@ -87,12 +89,24 @@
     }
   }
 
-  .itemContainer .icon {
-    font-size: 24px; /* Increase the font size of the icon */
+  .searchButton {
+    font-size: 20px; /* Increase the font size of the icon */
+    color: azure;
+    background-color: black;
+    padding: 5px 10px; /* Add padding to provide space around the icon */
+    margin-right: 1vh;
+    border: none; /* Remove default button border */
+    cursor: pointer; /* Add pointer cursor for better UX */
+    display: flex; /* Use flex to align icon and text */
+    align-items: center; /* Center items vertically */
+  }
+
+  /* .itemContainer .icon {
+    font-size: 24px; 
     color: black;
     padding-top: 10px;
     margin-right: 1vh;
-  }
+  } */
 
   .wrapper .right .hamburger {
     width: 32px;

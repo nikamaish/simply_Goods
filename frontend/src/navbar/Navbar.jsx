@@ -13,7 +13,16 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
     setSearchQuery(e.target.value);
   };
 
-  const handleSearchSubmit = () => {
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+
+    // Check if the search query is empty
+    if (searchQuery.trim() === '') {
+      // Handle the case where the search query is empty
+      console.log("Please enter a search query.");
+      return;
+    }
+  
     // Filter products based on the search query
     const searchResults = products.filter(product =>
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -44,7 +53,7 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
               value={searchQuery}
               onChange={handleSearchChange}
             />
-             <button onClick={handleSearchSubmit}>
+             <button onClick={handleSearchSubmit} className='searchButton'>
           <FontAwesomeIcon icon={faSearch} size='lg' />
         </button>
           </form>
