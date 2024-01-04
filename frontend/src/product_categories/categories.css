@@ -79,7 +79,8 @@
   .eproduct-prev,
   .eproduct-next {
     position: absolute;
-    top: 90%;
+    top:105%;
+    /* top: 105vh; */
     transform: translateY(-50%);
     background-color: #007bff; /* Adjust the background color */
     color: #fff; /* Adjust the text color */

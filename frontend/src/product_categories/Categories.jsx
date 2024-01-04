@@ -138,11 +138,11 @@ const Categories = () => {
         )}
         <button className="eproduct-prev" onClick={() => slideCards(-1)}>
           <FontAwesomeIcon icon={faAngleLeft} size="xl" style={{ paddingRight: '10px' }} />
-          Prev
+          {/* Prev */}
         </button>
 
         <button className="eproduct-next" onClick={() => slideCards(1)}>
-          Next
+          {/* Next */}
           <FontAwesomeIcon icon={faAngleRight} size="xl" style={{ paddingLeft: '10px' }} />
         </button>
         
