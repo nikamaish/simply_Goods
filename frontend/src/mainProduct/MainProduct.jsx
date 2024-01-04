@@ -129,5 +129,3 @@ const MainProduct = ({ products }) => {
 };
 
 export default MainProduct;
-
-
