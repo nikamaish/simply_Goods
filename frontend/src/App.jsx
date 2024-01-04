@@ -36,6 +36,11 @@ const App = () => {
           <Route path="/login" element={<Login/>} />
         <Route path="/products/:productId" element={<MainProduct products={products}  />} />
 
+        <Route path="/products/:productId/:productName" element={<MainProduct products={products} />} />
+
+
+
+
         </Routes>
 
       </Router>

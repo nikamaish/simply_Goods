@@ -85,7 +85,7 @@ import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 import './mainProduct.css';
 
 const MainProduct = ({ products }) => {
-  const { productId } = useParams();
+  const { productId, productName } = useParams();
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
