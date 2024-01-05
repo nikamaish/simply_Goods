@@ -18,25 +18,22 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-
+    performSearch();
+  };
+  
+  const performSearch = () => {
     // Check if the search query is empty
     if (searchQuery.trim() === '') {
       // Handle the case where the search query is empty
       console.log("Please enter a search query.");
       return;
     }
-
-    // const updatedHistory = [...searchHistory, searchQuery];
-    // setSearchHistory(updatedHistory);
-
-    // Save updated search history to localStorage
-    // localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
-
+  
     // Filter products based on the search query
     const searchResults = products.filter(product =>
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-
+  
     // Navigate to the MainProduct page with the product ID and name as parameters
     if (searchResults.length > 0) {
       const firstResult = searchResults[0];
@@ -46,6 +43,8 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
       console.log("No matching products found.");
     }
   };
+  
+
 
   return (
     <div className={"topbar " + (menuOpen && "active")}>

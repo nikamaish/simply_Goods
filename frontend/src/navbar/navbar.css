@@ -82,16 +82,26 @@
     /* border-radius: 5px; */
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     
     background-color: wheat;
     border: none; /* Change to none if you don't want a border on the input field */
     outline: none;
     padding: 10px; /* Increase padding for a larger input box */
+
+    
   
     @media only screen and (max-width: 800px) {
       width: 100%;
       margin-right: 0;
     }
+  }
+
+  .itemContainer input:focus {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    
   }
 
   .searchButton {
@@ -120,7 +130,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     padding: 10px;
-    overflow-y: auto; /* Add scrollbar if content overflows */
+    /* overflow-y: auto;  */
   }
   
   
