@@ -65,9 +65,9 @@ body, html {
     top: 70%; /* Adjust the distance from the top as needed */
   }
   .carousel-item img{
-    height: 12vh;
+    height: 30vh;
   }
   .carousel {
-    height: 18vh;
+    height: 30vh;
   }
 }
