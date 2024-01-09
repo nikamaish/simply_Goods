@@ -1,16 +1,31 @@
 // Navbar.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faUserPen, faCartArrowDown, faHouseUser } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faUserPen, faCartArrowDown, faHouseUser, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import './navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
 import products from '../categoriesData/CategoriesData'; // Import your product data file
 
 export default function Navbar({ menuOpen, setMenuOpen }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [isDropdownVisible, setDropdownVisible] = useState(false); // New state for dropdown visibility
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [searchHistory, setSearchHistory] = useState([]);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedHistory = localStorage.getItem('searchHistory');
+    if (storedHistory) {
+      setSearchHistory(JSON.parse(storedHistory));
+    }
+  }, []);
+
+  const updateSearchHistory = (query) => {
+    const updatedHistory = [query, ...searchHistory.filter((item) => item !== query)].slice(0, 7);
+    setSearchHistory(updatedHistory);
+    localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
+  };
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
@@ -20,34 +35,28 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
     e.preventDefault();
     performSearch();
   };
-  
+
   const performSearch = () => {
-    // Check if the search query is empty
     if (searchQuery.trim() === '') {
-      // Handle the case where the search query is empty
-      console.log("Please enter a search query.");
+      console.log('Please enter a search query.');
       return;
     }
-  
-    // Filter products based on the search query
-    const searchResults = products.filter(product =>
+
+    const searchResults = products.filter((product) =>
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  
-    // Navigate to the MainProduct page with the product ID and name as parameters
+
     if (searchResults.length > 0) {
       const firstResult = searchResults[0];
       navigate(`/products/${firstResult.id}/${encodeURIComponent(firstResult.name)}`);
+      updateSearchHistory(searchQuery);
     } else {
-      // Handle the case where no results are found or show a message
-      console.log("No matching products found.");
+      console.log('No matching products found.');
     }
   };
-  
-
 
   return (
-    <div className={"topbar " + (menuOpen && "active")}>
+    <div className={'topbar ' + (menuOpen ? 'active' : '')}>
       <div className="wrapper">
         <div className="left">
           <div className="logo">
@@ -56,23 +65,31 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
           <form
             onSubmit={handleSearchSubmit}
             className="itemContainer"
-            onFocus={() => setDropdownVisible(true)} // Show dropdown on focus
-            onBlur={() => setDropdownVisible(false)} // Hide dropdown on blur
+            onFocus={() => setDropdownVisible(true)}
+            onBlur={() => setDropdownVisible(false)}
           >
             <input
               type="search"
-              placeholder='Search Products'
+              placeholder="Search Products and More"
               value={searchQuery}
               onChange={handleSearchChange}
             />
-            <button type="submit" className='searchButton'>
-              <FontAwesomeIcon icon={faSearch} size='lg' />
+            <button type="submit" className="searchButton">
+              <FontAwesomeIcon icon={faSearch} size="lg" />
             </button>
 
             {isDropdownVisible && (
               <div className="dropdown-container">
-                {/* Your dropdown content goes here */}
-                <p>Dropdown Content Here</p>
+                {/* <p>Search History:</p> */}
+                <ul>
+                  {searchHistory.map((item, index) => (
+                    <li key={index} onClick={() => setSearchQuery(item)}>
+                       <FontAwesomeIcon icon={faClockRotateLeft} style={{marginRight:'10px'}}></FontAwesomeIcon>
+                      {item}
+                     
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
           </form>

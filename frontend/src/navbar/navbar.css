@@ -25,6 +25,7 @@
     font-size: 40px;
     font-weight: 700;
     text-decoration: none;
+    font-family: 'Kanit';
   }
 
   .wrapper .left .logo a {
@@ -101,7 +102,7 @@
   .itemContainer input:focus {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    
+
   }
 
   .searchButton {
@@ -124,6 +125,7 @@
     width: 79vh;
     height: 60vh;
     background-color: white;
+    color: black;
     /* border:  solid black; Add border value here */
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
