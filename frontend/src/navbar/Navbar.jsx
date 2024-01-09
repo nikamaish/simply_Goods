@@ -34,6 +34,7 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     performSearch();
+  
   };
 
   const performSearch = () => {
