@@ -55,7 +55,7 @@ router.use(
     try {
       const { fullname, email, password, passwordConfirm } = req.body;
   
-      if (!fullname || !email || !password || !passwordConfirm) {
+      if (!fullname || !email || !password ) {
         return res.status(400).json({ errorMessage: 'Please enter all required fields.' });
       }
 
@@ -64,11 +64,11 @@ router.use(
         .status(400)
         .json({ errorMessage: 'Please enter a password of at least 6 characters.' });
 
-    if (password !== passwordConfirm) {
-      return res
-        .status(400)
-        .json({ errorMessage: 'Please enter the same password twice.' });
-    }
+    // if (password !== passwordConfirm) {
+    //   return res
+    //     .status(400)
+    //     .json({ errorMessage: 'Please enter the same password twice.' });
+    // }
 
   
       const salt = await bcrypt.genSalt();
