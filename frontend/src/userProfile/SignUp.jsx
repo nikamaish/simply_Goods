@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import './signup.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   // const [name, setName] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState(''); // Added login status state
   const navigate = useNavigate(); // Corrected usage of useNavigate
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,12 +63,24 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+
+
+          <div className="password-container">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              style={{ height: '85%', width: '100%', fontSize: '16px', marginRight: '10px' }}
+              value={password}
+              onChange={handlePasswordChange}
+            />
+
+            <div className="Password-icon" onClick={() => setShowPassword(!showPassword)}>
+              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            </div>
+          </div>
+
+
+
           <button type="submit">Continue</button>
           <p>
             Already Account?
