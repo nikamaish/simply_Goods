@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-
+const MongoStore = require('connect-mongo')(session);
 
 const generateRandomString = (length) => {
     return crypto.randomBytes(length).toString('hex');
@@ -33,7 +33,7 @@ router.use(
       resave: false,
       saveUninitialized: false,
       cookie: {
-        // secure: true,
+        secure: process.env.NODE_ENV === 'production',
         // when we hoste the app on heroku, we need to set secure to true
         httpOnly: true,
         // what is httpOnly is that it is a security feature that prevents client side JavaScript from accessing the cookie. So if you are using React or Angular or Vue or any other front end framework, you will not be able to access the cookie from the front end. So this is a security feature that prevents cross-site scripting attacks.
@@ -46,7 +46,9 @@ router.use(
 
         maxAge: 24 * 60 * 60 * 1000, // 1 day
         // what is maxAge is that it is the time in milliseconds that the cookie will expire after
+
       },
+      store: new MongoStore({ url: process.env.MDB_URL }),
     })
   );
   

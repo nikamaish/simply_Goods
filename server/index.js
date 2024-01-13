@@ -17,7 +17,7 @@ app.use(express.json());
 
 
 const corsOptions = {
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3000', 'https://simplygoods-aish.web.app'],
     credentials: true,
     optionSuccessStatus: 200,
   };
@@ -26,9 +26,9 @@ const corsOptions = {
   
 
 
-// app.get('/', (req, res) => {
-//     res.send('It works!');
-// });
+app.get('/', (req, res) => {
+    res.send('It works!');
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
