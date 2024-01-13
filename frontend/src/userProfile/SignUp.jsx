@@ -1,81 +1,72 @@
 import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate } from 'react-router-dom';
 import './signup.css';
+import { Link, useNavigate } from 'react-router-dom';
 
-const SignUp = () => {
-  const [name, setName] = useState('');
+const Login = () => {
+  // const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
+  const [loginStatus, setLoginStatus] = useState(''); // Added login status state
+  const navigate = useNavigate(); // Corrected usage of useNavigate
 
-  const handlePasswordChange = (e) => {
-    const newPassword = e.target.value;
-    setPassword(newPassword);
-  };
-
-  const handleSubmit = async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try{
+    try {
       const apiUrl = 'http://localhost:5000/auth/register';
-      const response = await fetch (apiUrl,{
+      const response = await fetch( apiUrl, {
         method: 'POST',
-        headers:{
+        headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({name,email,password}),
-      })
+        body: JSON.stringify({  email, password }),
+      });
 
-      if(response.ok){
+      if (response.ok) {
         const data = await response.json();
-        navigate('/');
-        setName('');
-        setEmail('');
-        setPassword('');
-        
-      }
-
-      else{
+        navigate('/'); // Use navigate for navigation
+        window.location.reload();
+        setLoginStatus('Login successful');
+      } else {
         const errorData = await response.json();
-        console.log('Signup failed');
+        // Write 'login fail' or handle the error as needed
+        console.log('Login failed');
+        setLoginStatus('Login failed');
       }
-
+    } catch (error) {
+      console.error(error);
     }
-    catch (error) {
-      console.error('Signup failed:', error);
-    }
-    
+  };
 
-  }
   return (
     <div>
       <div className="signup">
         <form onSubmit={handleSubmit}>
-          <h2>Create Account</h2>
-          <input type="text" placeholder='First and last name' value={name} onChange={(e)=>setName(e.target.value)} />
-          <input type="email" placeholder='Email' value={email} onChange={(e)=> setEmail (e.target.value)} />
-
-          <div className="password-container">
-            <input
-              type={showPassword ? 'text' : 'password'}
-              placeholder='Password'
-              style={{ height: '85%', width: '100%', fontSize: '16px', marginRight: '10px' }}
-              value={password}
-              onChange={(e)=>setPassword(e.target.value)}
-            />
-
-            <div className="Password-icon" onClick={() => setShowPassword(!showPassword)}>
-              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-            </div>
-          </div>
-
-          <button type='submit'>Sign Up</button>
+          <h2>Sign Up</h2>
+          {/* <input
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          /> */}
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">Continue</button>
           <p>
-            Already have an account? 
-            <Link to='/login' className='lacc'>Log in</Link>
+            Already Account?
+            <Link to="/login" className="lacc">
+              Login Here
+            </Link>
           </p>
         </form>
       </div>
@@ -83,4 +74,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;

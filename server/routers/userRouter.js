@@ -53,9 +53,9 @@ router.use(
 
   router.post('/register', async (req, res) => {
     try {
-      const { fullname, email, password, passwordConfirm } = req.body;
+      const { email, password} = req.body;
   
-      if (!fullname || !email || !password ) {
+      if (!email || !password ) {
         return res.status(400).json({ errorMessage: 'Please enter all required fields.' });
       }
 
@@ -75,7 +75,7 @@ router.use(
       const passwordHash = await bcrypt.hash(password, salt);
   
       const newCustomer = new Customer({
-        fullname,
+        // fullname,
         email,
         passwordHash
       });
@@ -135,7 +135,10 @@ router.use(
         return res.status(401).json({errorMessage:"Wrong email or password"})
       }
 
-      req.session.user = { _id: existingCustomer._id, fullname: existingCustomer.fullname, email: existingCustomer.email };
+      // req.session.user = { _id: existingCustomer._id, fullname: existingCustomer.fullname, email: existingCustomer.email };
+
+      req.session.user = { _id: existingCustomer._id, email: existingCustomer.email };
+
     //   why we need to do it different bcz in register we only save the user id in the session but in login we are saving the whole user object in the session. So this is how we can store the user in the session.
     // because we are going to use the user object in the session to display the user's name and email in the navbar. So this is why we need to store the whole user object in the session.
     // it means when i login then then my name will be there in navbar and when i logout then my name will not be there in navbar is it right? yes

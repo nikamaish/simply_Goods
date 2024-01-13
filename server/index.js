@@ -6,17 +6,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
-
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-  next();
-  });
 
 const PORT = process.env.PORT || 5000;
 
@@ -27,12 +17,13 @@ app.use(express.json());
 
 
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://simplygoods-aish.web.app'],
+    origin: ['http://localhost:3000'],
     credentials: true,
     optionSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
+  };
+  
+  app.use(cors(corsOptions));
+  
 
 
 // app.get('/', (req, res) => {
