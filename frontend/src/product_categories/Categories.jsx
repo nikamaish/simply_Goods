@@ -9,13 +9,13 @@ import MainProduct from '../mainProduct/MainProduct';
 const Categories = () => {
   const electronics = [
     {
-      name: 'Pendrives and SD cards',
-      img: 'https://purepng.com/public/uploads/large/purepng.com-sandisk-usb-flash-pen-driveelectronics-pen-drive-usb-9415246650490ar6r.png',
+      name: 'Headphones',
+      img: 'https://m.media-amazon.com/images/I/41AKfrELYdL._SY300_SX300_QL70_FMwebp_.jpg',
       price: '289',
     },
     {
       name: 'Wireless Mouse and Keyboard',
-      img: 'https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/peripherals/input-devices/dell/keyboards/km3322w/spi/ng/keyboard-mouse-km3322w-campaign-hero-504x350-ng.psd?hei=402&qtl=90,0&op_usm=1.75,0.3,2,0&resMode=sharp&pscan=auto',
+      img: 'https://m.media-amazon.com/images/I/81w2enEMmqS.jpg',
       price: '169',
     },
     {

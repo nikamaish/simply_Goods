@@ -34,10 +34,15 @@ const products = [
   { id: 2, name: 'Camera3', price: '179', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPHqs-C8AYEAKtY8PmcpotDWbmVNx4Ra8Dlw&usqp=CAU', stars: 3, off: '10% off', cancelPrice: '199',colorType:'Blue,Lithium Polymer' },
   { id: 2, name: 'Camera4', price: '179', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPHqs-C8AYEAKtY8PmcpotDWbmVNx4Ra8Dlw&usqp=CAU', stars: 3, off: '10% off', cancelPrice: '199',colorType:'Blue,Lithium Polymer' },
   { id: 2, name: 'Camera5', price: '179', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPHqs-C8AYEAKtY8PmcpotDWbmVNx4Ra8Dlw&usqp=CAU', stars: 3, off: '10% off', cancelPrice: '199',colorType:'Blue,Lithium Polymer' },
-  { id: 3, name: 'SanDisk1', price: '179', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPHqs-C8AYEAKtY8PmcpotDWbmVNx4Ra8Dlw&usqp=CAU', stars: 3, off: '10% off', cancelPrice: '199' , colorType:'Blue,Lithium Polymer'},
-  { id: 3, name: 'Cellecor', price: '179', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPHqs-C8AYEAKtY8PmcpotDWbmVNx4Ra8Dlw&usqp=CAU', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
-  { id: 3, name: 'Boat', price: '179', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPHqs-C8AYEAKtY8PmcpotDWbmVNx4Ra8Dlw&usqp=CAU', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  
+  { id: 3, name: 'Galaxy Watch4', price: '179', img: 'https://images.samsung.com/is/image/samsung/p6pim/in/2108/gallery/in-galaxy-watch4-sm-r860nzdainu-481079019?$730_584_PNG$', stars: 3, off: '10% off', cancelPrice: '199' , colorType:'Blue,Lithium Polymer'},
+  { id: 3, name: 'Casio Edifice Analog ', price: '179', img: 'https://m.media-amazon.com/images/I/61SqhamoZbL._SY879_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  { id: 3, name: 'Apple Watch Ultra 2', price: '179', img: 'https://www.imagineonline.store/cdn/shop/files/Apple_Watch_Ultra_2_LTE_49mm_Titanium_Orange_Ocean_Band_PDP_Image_Avail_Position-1__en-IN_db6dff4e-cc46-4fd3-8a3f-e68511d1ced0_823x.jpg?v=1698878274', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  { id: 3, name: 'Casio Vintage Digital Unisex A-158WA-1Q ', price: '179', img: 'https://m.media-amazon.com/images/I/61ybeKQto8L._SY879_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  { id: 3, name: '', price: '179', img: 'https://www.fireboltt.com/cdn/shop/products/BM2_540x.png?v=1685345649', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
 
+  { id: 3, name: 'Noise ColorFit Pulse', price: '179', img: 'https://m.media-amazon.com/images/I/412dSHwBHGL._SX300_SY300_QL70_FMwebp_.jpg', stars: 3, off: '10% off', cancelPrice: '199' , colorType:'Blue,Lithium Polymer'},
+ 
 ];
 
 export default products;
