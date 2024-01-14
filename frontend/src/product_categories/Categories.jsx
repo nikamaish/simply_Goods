@@ -9,23 +9,23 @@ import MainProduct from '../mainProduct/MainProduct';
 const Categories = () => {
   const electronics = [
     {
-      name: 'Headphones',
+      name: 'Headphone',
       img: 'https://m.media-amazon.com/images/I/41AKfrELYdL._SY300_SX300_QL70_FMwebp_.jpg',
       price: '289',
     },
     {
-      name: 'Wireless Mouse and Keyboard',
+      name: 'Mouse and Keyboard',
       img: 'https://m.media-amazon.com/images/I/81w2enEMmqS.jpg',
       price: '169',
     },
     {
-      name: 'Camera',
+      name: 'Laptop',
       img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM8oJVQDAgQJqsceuZd59tHI8AG-fSTB2s1w&usqp=CAU',
       price: '179',
     },
     {
-      name: 'Powerbanks',
-      img: 'https://atlas-content-cdn.pixelsquid.com/stock-images/usb-power-bank-powerbank-G9GnBK2-600.jpg',
+      name: 'Watch',
+      img: 'https://m.media-amazon.com/images/I/61t5vb1LAUL._SX679_.jpg',
       price: '179',
     },
     {
