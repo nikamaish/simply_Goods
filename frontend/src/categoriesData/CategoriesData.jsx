@@ -29,8 +29,8 @@ const products = [
   // Add more cards as needed
   
 
-  { id: 2, name: 'Camera1', price: '169', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPHqs-C8AYEAKtY8PmcpotDWbmVNx4Ra8Dlw&usqp=CAU', stars: 5, off: '10% off', cancelPrice: '199',colorType:'Blue,Lithium Polymer' },
-  { id: 2, name: 'Camera2', price: '179', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPHqs-C8AYEAKtY8PmcpotDWbmVNx4Ra8Dlw&usqp=CAU', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer'},
+  { id: 2, name: 'Camera1', price: '169', img: 'https://p2-ofp.static.pub/fes/cms/2022/09/26/7eddi22dpdakm0vilgk795p1d4i3ky533559.png', stars: 5, off: '10% off', cancelPrice: '199',colorType:'Blue,Lithium Polymer' },
+  { id: 2, name: 'Camera2', price: '179', img: 'https://m.media-amazon.com/images/I/41rafnfnlqL._SX300_SY300_QL70_FMwebp_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer'},
   { id: 2, name: 'Camera3', price: '179', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPHqs-C8AYEAKtY8PmcpotDWbmVNx4Ra8Dlw&usqp=CAU', stars: 3, off: '10% off', cancelPrice: '199',colorType:'Blue,Lithium Polymer' },
   { id: 2, name: 'Camera4', price: '179', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPHqs-C8AYEAKtY8PmcpotDWbmVNx4Ra8Dlw&usqp=CAU', stars: 3, off: '10% off', cancelPrice: '199',colorType:'Blue,Lithium Polymer' },
   { id: 2, name: 'Camera5', price: '179', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPHqs-C8AYEAKtY8PmcpotDWbmVNx4Ra8Dlw&usqp=CAU', stars: 3, off: '10% off', cancelPrice: '199',colorType:'Blue,Lithium Polymer' },
@@ -40,9 +40,29 @@ const products = [
   { id: 3, name: 'Apple Watch Ultra 2', price: '179', img: 'https://www.imagineonline.store/cdn/shop/files/Apple_Watch_Ultra_2_LTE_49mm_Titanium_Orange_Ocean_Band_PDP_Image_Avail_Position-1__en-IN_db6dff4e-cc46-4fd3-8a3f-e68511d1ced0_823x.jpg?v=1698878274', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
   { id: 3, name: 'Casio Vintage Digital Unisex A-158WA-1Q ', price: '179', img: 'https://m.media-amazon.com/images/I/61ybeKQto8L._SY879_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
   { id: 3, name: '', price: '179', img: 'https://www.fireboltt.com/cdn/shop/products/BM2_540x.png?v=1685345649', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
-
   { id: 3, name: 'Noise ColorFit Pulse', price: '179', img: 'https://m.media-amazon.com/images/I/412dSHwBHGL._SX300_SY300_QL70_FMwebp_.jpg', stars: 3, off: '10% off', cancelPrice: '199' , colorType:'Blue,Lithium Polymer'},
  
+  {id: 4, name: 'Xiaomi Pad 6', price: '179', img: 'https://m.media-amazon.com/images/I/415gV21fNCL._SX300_SY300_QL70_FMwebp_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  {id:4, name: 'Apple 2022 iPad Air ', price: '179', img: 'https://m.media-amazon.com/images/I/61smvoZKNRL._SX679_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' }, 
+  {id:4, name: 'Samsung Galaxy Tab S8 ', price: '179', img: 'https://m.media-amazon.com/images/I/81QCuPs6IKL._SX679_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },  
+  {id:4, name: 'Lenovo Tab M10 ', price: '179', img: 'https://m.media-amazon.com/images/I/51KOc8HTlJL._SX679_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },  
+  {id:4, name: 'OnePlus Pad Go ', price: '179', img: 'https://m.media-amazon.com/images/I/31VKTpmJ6pL.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  {id:4, name: 'HONOR Pad X8  ', price: '179', img: 'https://m.media-amazon.com/images/I/31C8xR5JqWL._SX300_SY300_QL70_FMwebp_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },  
+  {id:4, name: 'Samsung Galaxy Tab A7 Lite ', price: '179', img: 'https://m.media-amazon.com/images/I/915rA4VNXuL._SL1500_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  {id:4, name: 'Redmi Pad  ', price: '179', img: 'https://m.media-amazon.com/images/I/41qmNmmToLL._SX300_SY300_QL70_FMwebp_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  {id:4, name: 'Realme Pad 2 ', price: '179', img: 'https://m.media-amazon.com/images/I/611k+zsIqaL._SX679_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },  
+  {id:4, name: 'itel PAD ONE ', price: '179', img: 'https://m.media-amazon.com/images/I/41mSLDST6VL._SX300_SY300_QL70_FMwebp_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+
+  {id:5, name: 'Samsung Galaxy S23', price: '179', img: 'https://m.media-amazon.com/images/I/61VfL-aiToL._SX679_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  {id:5, name: 'One Plus 11R ', price: '179', img: 'https://m.media-amazon.com/images/I/41etLpNZV6L._SX300_SY300_QL70_FMwebp_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  {id:5, name: 'Nothing Phone (2) ', price: '179', img: 'https://m.media-amazon.com/images/I/713rQyFyeXL._SX679_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  {id:5, name: 'Motorola G54 5G ', price: '179', img: 'https://m.media-amazon.com/images/I/71BLE+4XbIL._SY879_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  {id:5, name: 'iQOO Neo 7 Pro', price: '179', img: 'https://m.media-amazon.com/images/I/712pLRfzDYL._SX679_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  {id:5, name: 'Samsung Galaxy Z Flip3 5G', price: '179', img: 'https://m.media-amazon.com/images/I/41QWqW2riDL._SX300_SY300_QL70_FMwebp_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  {id:5, name: 'Apple iPhone 15 ', price: '179', img: 'https://m.media-amazon.com/images/I/71d7rfSl0wL._SX679_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  {id:5, name: 'Google Pixel 8 ', price: '179', img: 'https://m.media-amazon.com/images/I/71m09hEhnwL.__AC_SX300_SY300_QL70_FMwebp_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  {id:5, name: 'Sony Xperia 1 IV  ', price: '179', img: 'https://d1ncau8tqf99kp.cloudfront.net/converted/103060_original_local_1200x1050_converted.webp', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
+  {id:5, name: ' Asus ROG Phone 6', price: '179', img: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT-5_Yh7hQGCBLku9CzYfFGzquby_wp8HXEpkqjFE9mJce-KlTx091sxEJ_LKlQmsnRNB1X4vD1wYTws0eMAV-OE-wSH7EdzdPS1ddcTNPy8uk_YfeuPKXF', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
 ];
 
 export default products;
