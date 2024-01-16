@@ -25,22 +25,22 @@ const Categories = () => {
     },
     {
       name: 'Watch',
-      img: 'https://m.media-amazon.com/images/I/61t5vb1LAUL._SX679_.jpg',
+      img: 'https://www.fireboltt.com/cdn/shop/files/3_27d45c02-6d3f-47a1-a69b-8b1425762e15_540x.png?v=1686730080',
       price: '179',
     },
     {
-      name: 'BenQ Monitors',
-      img: 'https://rukminim2.flixcart.com/image/312/312/xif0q/monitor/w/2/f/cb282k-uhd-28-2023-um-pb2ss-001-acer-original-imagqhefn3jq85kp.jpeg?q=70',
+      name: 'Tab',
+      img: 'https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1685969389/Croma%20Assets/Computers%20Peripherals/Tablets%20and%20iPads/Images/264220_zwzdi0.png?tr=w-480',
       price: '179',
     },
     {
-      name: 'Printers ',
-      img: 'https://rukminim2.flixcart.com/image/612/612/k4a7c7k0/printer/y/j/z/canon-e3370-original-imafn2wyyxjjvzd6.jpeg?q=70',
+      name: 'Mobile Phone ',
+      img: 'https://m.media-amazon.com/images/I/41etLpNZV6L._SX300_SY300_QL70_FMwebp_.jpg',
       price: '179',
     },
     {
       name: 'Monitor',
-      img: 'https://rukminim2.flixcart.com/image/312/312/kmp7ngw0/monitor/j/z/h/s2721hn-27-py0df-dell-original-imagfjphuywuh2a7.jpeg?q=70',
+      img: 'https://m.media-amazon.com/images/I/71jVRzxB1wL._SX679_.jpg',
       price: '179',
     },
   ];
