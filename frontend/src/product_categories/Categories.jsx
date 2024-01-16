@@ -18,11 +18,7 @@ const Categories = () => {
       img: 'https://m.media-amazon.com/images/I/81w2enEMmqS.jpg',
       price: '169',
     },
-    {
-      name: 'Laptop',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM8oJVQDAgQJqsceuZd59tHI8AG-fSTB2s1w&usqp=CAU',
-      price: '179',
-    },
+  
     {
       name: 'Watch',
       img: 'https://www.fireboltt.com/cdn/shop/files/3_27d45c02-6d3f-47a1-a69b-8b1425762e15_540x.png?v=1686730080',
@@ -39,7 +35,12 @@ const Categories = () => {
       price: '179',
     },
     {
-      name: 'Monitor',
+      name: 'Refrigerator',
+      img: 'https://m.media-amazon.com/images/I/413xPokXBiL._SY445_SX342_QL70_FMwebp_.jpg',
+      price: '179',
+    },
+    {
+      name: 'TVs',
       img: 'https://m.media-amazon.com/images/I/71jVRzxB1wL._SX679_.jpg',
       price: '179',
     },
