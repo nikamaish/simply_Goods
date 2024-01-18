@@ -5,6 +5,7 @@ import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';  
 import { useNavigate } from 'react-router-dom';
 import MainProduct from '../mainProduct/MainProduct';
+import CategoriesCard from '../categoryCard/CategoriesCard';
 
 const Categories = () => {
   const electronics = [
@@ -51,7 +52,7 @@ const Categories = () => {
 
       name:'Cycle',
       img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVUPjylIIgof5-4stlP6rwYhDE1mrjTOnrwt_WJdc2jcT1tyyAU_MHj53dJ25OcPwTHKQ&usqp=CAU',
-      price:'Up to 40% Off',
+      price:'200',
 
 
   }]
@@ -109,46 +110,47 @@ const Categories = () => {
     }
   };
 
-  
+  const renderCategoriesCard = (products) => {
+    return products.map((product, index) => (
+      <CategoriesCard key={index} product={product} onClick={() => handleProductClick(index)} />
+    ));
+  };
   
 
 
   return (
     <div>
-      <div className="rectangle-container">
-        <div className="electronics">
-          <h1>Best Of Electronics</h1>
-        </div>
-        <div className="eproduct-container">
-      {electronics.map((product, index) => (
-        <div key={index} className="eproduct-card" onClick={() => handleProductClick(index)}>
-          <img src={product.img} alt={product.name} className="eproduct-image" />
-          <div className="eproduct-details">
-            <p className="eproduct-name">{product.name}</p>
-            <p className="eproduct-price">From ₹ {product.price}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-
-
-        {visibleCards < totalCards && (
-          <button className="show-more-btn" onClick={handleShowMore}>
-            Show More
-          </button>
-        )}
-        <button className="eproduct-prev" onClick={() => slideCards(-1)}>
-          <FontAwesomeIcon icon={faAngleLeft} size="xl" style={{ paddingRight: '10px' }} />
-          {/* Prev */}
-        </button>
-
-        <button className="eproduct-next" onClick={() => slideCards(1)}>
-          {/* Next */}
-          <FontAwesomeIcon icon={faAngleRight} size="xl" style={{ paddingLeft: '10px' }} />
-        </button>
-        
+    <div className="rectangle-container">
+      <div className="electronics">
+        <h1>Best Of Electronics</h1>
+      </div>
+      <div className="eproduct-container">
+        {renderCategoriesCard(electronics)}
       </div>
     </div>
+  
+    <div className="rectangle-container">
+      <div className="electronics">
+        <h1>Best Of Beauty, Food & Toys</h1>
+      </div>
+      <div className="eproduct-container">
+        {renderCategoriesCard(beautyFoodToys)}
+      </div>
+    </div>
+  
+    {visibleCards < totalCards && (
+      <button className="show-more-btn" onClick={handleShowMore}>
+        Show More
+      </button>
+    )}
+    <button className="eproduct-prev" onClick={() => slideCards(-1)}>
+      <FontAwesomeIcon icon={faAngleLeft} size="xl" style={{ paddingRight: '10px' }} />
+    </button>
+    <button className="eproduct-next" onClick={() => slideCards(1)}>
+      <FontAwesomeIcon icon={faAngleRight} size="xl" style={{ paddingLeft: '10px' }} />
+    </button>
+  </div>
+  
   );
 };
 
