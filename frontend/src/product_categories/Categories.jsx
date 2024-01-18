@@ -35,13 +35,13 @@ const Categories = () => {
       price: '179',
     },
     {
-      name: 'Refrigerator',
-      img: 'https://m.media-amazon.com/images/I/413xPokXBiL._SY445_SX342_QL70_FMwebp_.jpg',
+      name: 'TVs',
+      img: 'https://m.media-amazon.com/images/I/71jVRzxB1wL._SX679_.jpg',
       price: '179',
     },
     {
-      name: 'TVs',
-      img: 'https://m.media-amazon.com/images/I/71jVRzxB1wL._SX679_.jpg',
+      name: 'Refrigerator',
+      img: 'https://m.media-amazon.com/images/I/413xPokXBiL._SY445_SX342_QL70_FMwebp_.jpg',
       price: '179',
     },
   ];
