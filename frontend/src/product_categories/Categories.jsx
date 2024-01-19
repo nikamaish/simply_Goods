@@ -48,10 +48,10 @@ const Categories = () => {
   ];
 
 
-  const Shoes = [{
+  const beautyFoodToys = [{
 
       name:'Cycle',
-      img:'https://pngimg.com/d/converse_PNG59.png',
+      img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVUPjylIIgof5-4stlP6rwYhDE1mrjTOnrwt_WJdc2jcT1tyyAU_MHj53dJ25OcPwTHKQ&usqp=CAU',
       price:'200',
 
 
@@ -131,10 +131,10 @@ const Categories = () => {
   
     <div className="rectangle-container">
       <div className="electronics">
-        <h1>Best Of Shoes and Clothes</h1>
+        <h1>Best Of Beauty, Food & Toys</h1>
       </div>
       <div className="eproduct-container">
-        {renderCategoriesCard(Shoes)}
+        {renderCategoriesCard(beautyFoodToys)}
       </div>
     </div>
   
