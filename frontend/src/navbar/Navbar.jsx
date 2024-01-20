@@ -2,15 +2,18 @@
 
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faUserPen, faCartArrowDown, faHouseUser, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faUserPen, faCartArrowDown, faHouseUser, faClockRotateLeft, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import './navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
 import products from '../categoriesData/CategoriesData'; // Import your product data file
+import CustomerLogout from '../userProfile/CustomerLogout';
+import { useAuth } from '../authContext/AuthContext';
 
 export default function Navbar({ menuOpen, setMenuOpen }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [searchHistory, setSearchHistory] = useState([]);
+  const { customer } = useAuth();
 
   const navigate = useNavigate();
 
@@ -103,9 +106,17 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
             <FontAwesomeIcon icon={faCartArrowDown} size='2x' className='ficons' />
           </div>
           <div className="itemContainer">
-            <Link to='/signup'>
+
+          {customer? (
+              // If the user is authenticated, show the logout button
+              <Link to="/logout" className='user-icon'><FontAwesomeIcon icon={faRightFromBracket}/></Link>
+            ) : (
+              // If the user is not authenticated, show the user icon
+              <Link to='/signup'>
               <FontAwesomeIcon icon={faUserPen} size='2x' className='ficons' />
             </Link>
+            )}
+
           </div>
         </div>
         <div className="right">

@@ -10,6 +10,7 @@ import MainPage from './mainpage/MainPage';
 import MainProduct from './mainProduct/MainProduct';
 import products from './categoriesData/CategoriesData.jsx';
 import { AuthProvider } from './authContext/AuthContext.js';
+import CustomerLogout from './userProfile/CustomerLogout.jsx';
 
 
 
@@ -32,8 +33,9 @@ const App = () => {
           <Route path="/" element={<MainPage />} />
           <Route path="/signup" element={<SignUp/>} />
           <Route path="/login" element={<Login/>} />
-        <Route path="/products/:productId" element={<MainProduct products={products}  />} />
+          <Route path='/logout' element={<CustomerLogout/>}/>
 
+        <Route path="/products/:productId" element={<MainProduct products={products}  />} />
         <Route path="/products/:productId/:productName" element={<MainProduct products={products} />} />
 
 

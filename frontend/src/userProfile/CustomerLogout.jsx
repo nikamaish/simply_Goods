@@ -3,7 +3,7 @@ import { useAuth } from  '../authContext/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 
-const LogOut = () => {
+const CustomerLogout = () => {
 
     const { logout } = useAuth();
     const navigate = useNavigate();
@@ -11,7 +11,7 @@ const LogOut = () => {
   useEffect(()=>{
     const handleLogout = async () => {
     try {
-        const apiUrl ='https://localhost:5000/auth/logout';
+        const apiUrl ='http://localhost:5000/auth/logout';
         const response = await fetch (`${apiUrl}/logout`,{
             method: 'GET',
             credentials: 'include', // Include credentials for sessions/cookies
@@ -39,4 +39,4 @@ const LogOut = () => {
   )
 }
 
-export default LogOut;
+export default CustomerLogout;
