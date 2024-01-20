@@ -11,6 +11,7 @@ import MainProduct from './mainProduct/MainProduct';
 import products from './categoriesData/CategoriesData.jsx';
 import { AuthProvider } from './authContext/AuthContext.js';
 import CustomerLogout from './userProfile/CustomerLogout.jsx';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 
 
@@ -45,6 +46,7 @@ const App = () => {
         </div>
       </Router>
       </AuthProvider>
+      
   
   );
 };

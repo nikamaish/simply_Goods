@@ -125,10 +125,10 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
 
           {customer ? (
               // If the user is authenticated, show the logout button
-              <Link to="/logout" className='user-icon'><FontAwesomeIcon icon={faRightFromBracket}/></Link>
+              <Link to="/logout" className='ficons'><FontAwesomeIcon icon={faRightFromBracket} size='xl'/></Link>
             ) : (
               // If the user is not authenticated, show the user icon
-              <Link to="/signup" className='user-icon'><FontAwesomeIcon icon= {faUserPen}/> </Link>
+              <Link to="/signup" className='ficons'><FontAwesomeIcon icon= {faUserPen} size='xl'/> </Link>
             )}
 
           </div>
