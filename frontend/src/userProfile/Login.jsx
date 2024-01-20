@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './signup.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../authContext/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState(''); // Added login status state
   const navigate = useNavigate(); // Corrected usage of useNavigate
+const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,9 +26,12 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        navigate('/'); // Use navigate for navigation
-        window.location.reload();
+        // window.location.reload();
         setLoginStatus('Login successful');
+        // login(data); // Adjust this based on your actual user data structure
+        navigate('/'); // Use navigate for navigation
+
+
       } else {
         const errorData = await response.json();
         // Write 'login fail' or handle the error as needed

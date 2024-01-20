@@ -2,20 +2,33 @@
 
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faUserPen, faCartArrowDown, faHouseUser, faClockRotateLeft, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+// import { faSearch, faUserPen, faCartArrowDown, faHouseUser, faClockRotateLeft} from '@fortawesome/free-solid-svg-icons';
+import {  faSearch, faUserPen, faCartArrowDown, faHouseUser, faClockRotateLeft, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import './navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
 import products from '../categoriesData/CategoriesData'; // Import your product data file
 import CustomerLogout from '../userProfile/CustomerLogout';
-import { useAuth } from '../authContext/AuthContext';
+import {useAuth}  from '../authContext/AuthContext'
+
 
 export default function Navbar({ menuOpen, setMenuOpen }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [searchHistory, setSearchHistory] = useState([]);
   const { customer } = useAuth();
+  console.log('Customer:', customer)
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // If the user is not yet loaded, set up a listener or loading indicator
+    if (customer === null) {
+      // Set up any loading indicator or listener here
+    }
+  }, [customer]);
+
+
+
 
   useEffect(() => {
     const storedHistory = localStorage.getItem('searchHistory');
@@ -59,6 +72,9 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
     }
   };
 
+
+
+  
   return (
     <div className={'topbar ' + (menuOpen ? 'active' : '')}>
       <div className="wrapper">
@@ -107,14 +123,12 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
           </div>
           <div className="itemContainer">
 
-          {customer? (
+          {customer ? (
               // If the user is authenticated, show the logout button
               <Link to="/logout" className='user-icon'><FontAwesomeIcon icon={faRightFromBracket}/></Link>
             ) : (
               // If the user is not authenticated, show the user icon
-              <Link to='/signup'>
-              <FontAwesomeIcon icon={faUserPen} size='2x' className='ficons' />
-            </Link>
+              <Link to="/signup" className='user-icon'><FontAwesomeIcon icon= {faUserPen}/> </Link>
             )}
 
           </div>

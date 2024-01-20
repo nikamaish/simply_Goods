@@ -17,7 +17,7 @@ export const AuthProvider = ({children})=>{
     // can we set as empty string? yes, but we don't have any customer yet
 
     const login = (customerData)=>{
-        setCustomer(customerData.customer);
+        setCustomer(customerData);
     }
     // login is a function that takes customerData as a parameter
     // why we write customerData.customer? because we want to get the customer object from customerData

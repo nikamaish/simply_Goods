@@ -12,7 +12,7 @@ const CustomerLogout = () => {
     const handleLogout = async () => {
     try {
         const apiUrl ='http://localhost:5000/auth/logout';
-        const response = await fetch (`${apiUrl}/logout`,{
+        const response = await fetch (apiUrl,{
             method: 'GET',
             credentials: 'include', // Include credentials for sessions/cookies
         })
@@ -30,11 +30,11 @@ const CustomerLogout = () => {
     }
     };
     handleLogout();
-  }, [logout, navigate]) 
+  }, [logout]) 
 
   return (
     <div>
-      
+      <h1 style={{color:'whitesmoke'}}>You loged out</h1>
     </div>
   )
 }
