@@ -12,7 +12,8 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const apiUrl = 'https://simplygoods-server.onrender.com/auth/login';
+      // const apiUrl = 'https://simplygoods-server.onrender.com/auth/login';
+      const apiUrl = 'http://localhost:5000/auth/login'
       const response = await fetch( apiUrl, {
         method: 'POST',
         headers: {

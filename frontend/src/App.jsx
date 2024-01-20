@@ -9,14 +9,9 @@ import Login from './userProfile/Login';
 import MainPage from './mainpage/MainPage';
 import MainProduct from './mainProduct/MainProduct';
 import products from './categoriesData/CategoriesData.jsx';
+import { AuthProvider } from './authContext/AuthContext.js';
 
 
-// const products = [
-//   { id: 1, name: 'Pendrives and SD cards', price: '289' },
-//   { id: 2, name: 'Wireless Mouse and Keyboard', price: '169' },
-//   { id: 3, name: 'Camera', price: '179' },
-//   // Add more products as needed
-// ];
 
 const App = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -25,8 +20,11 @@ const App = () => {
     console.log('Applied filters:', filters);
   };
   return (
-    <div>
+    
+
+<AuthProvider>
       <Router>
+      <div>
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
@@ -42,9 +40,10 @@ const App = () => {
 
 
         </Routes>
-
+        </div>
       </Router>
-    </div>
+      </AuthProvider>
+  
   );
 };
 
