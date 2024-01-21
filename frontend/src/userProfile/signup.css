@@ -1,110 +1,150 @@
-.userProfile {
+*{
+    margin: 0;
+    padding: 0;
+}
+.signup{
     width: 100%;
-    height: 145vh;
+    height: 125vh;
     display: flex;
     align-items: center;
     justify-content: center;
-   
-    background-color: #0eb0e6;
-}
+    /* this is to center the all inputs */
 
-.big-container {
-    width: 40%;
-    background-color: #f5f5f5;
-    height: 80%;
-    display: flex;
-    align-items: flex-start; /* Aligning content to the top */
+}
+.signup form{
+    width: 30%;
+    height: 60%;
+    background-color: azure;
     border-radius: 5px;
-    flex-direction: column;
-    justify-content: flex-start; /* Start from the top of the container */
-    padding: 20px; /* Adding padding for spacing */
-}
-
-.big-container h2 {
-    font-family: 'Nunito', sans-serif;
-    align-self: center; /* Aligning h2 to the top of the container */
-    /* margin-bottom: 10vh; */
-    margin: 2vh 0 5vh 0;
-
-}
-
-.big-container form {
+    border: solid 1px #000;
     display: flex;
     flex-direction: column;
     align-items: center; /* Centering form elements horizontally */
-    width: 100%; /* Setting width to 100% */
+    
 }
 
-.big-container form input {
-    margin: 10px 0;
-    font-family: 'Nunito', sans-serif;
-    font-size: 20px;
-    padding: 10px;
+.signup form h2{
+    margin: 30px 10px;
+
+}
+.signup form input{
+    width: 70%;
+    height: 8%;
+    border-radius: 5px;
+    border: solid 1px #000;
+    margin-bottom: 10px;
     background-color: #f5f5f5;
     border: 1px solid #707070; 
-    border-radius: 5px;
-    width: 80%; 
+    padding: 5px;
 }
-.big-container form input:focus {
+.signup form input:focus {
     outline: none;
     /* border: 2px solid #0eb0e6; */
 }
 
-.big-container form button {
-    margin-top: 10vh;
-    padding: 15px 10px ;
-    width: 80%;
+.signup form button {
+    margin:6vh 0 4vh 0;
+    padding: 10px 10px ;
+    width: 70%;
     font-family: 'Nunito', sans-serif;
     font-weight: 800;
     cursor: pointer;
     font-size: 20px;
-    background-color: #061E45;
+    background-color:rgb(240, 240, 35);
     border-radius: 5px;
     border: none;
-    color: #fff;
+    color: #000;
+    
 }
-.big-container form p {
- font-size: 15px;   
- font-weight: 800;
- font-family: 'Nunito', sans-serif;
- font-family:Verdana, Geneva, Tahoma, sans-serif;
+.password-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+    height: 8%;
+}
 
-}
-.big-container form a, h3{
+.password-container input {
+    height: 12%; /* Adjust the height as needed */
+    font-size: 16px; /* Adjust the font size as needed */
+  }
+
+  .signup form button:hover{
+    background-color:rgb(255, 255, 21);
+  }
+  .lacc{
+    margin-left: 10px;
+    font-size: 17px;
+    font-weight: 600;
     text-decoration: none;
     font-family: 'Nunito', sans-serif;
-    margin-top: 2vh;
-}
+  }
 
-
-.big-container form .error-message{
-    
-    color: red;
-    font-size: 18px;
-    font-weight: 800;
-    /* margin-top: 2vh; */
-    /* margin-bottom: 2vh; */
-    text-align: center;
-}
-.big-container form .success-message{
-    color:rgb(16, 214, 16);
-    font-size: 18px;
-    font-weight: 800;
-    text-align: center;
-}
-.sign-up{
-    margin-top: 2vh;
-}
-.sign-up h3{
-    margin-top: 2vh;
-    text-align: center;
-    /* font-family: 'Nunito', sans-serif; */
-}
-
-
-@media  (max-width: 768px) {
-    .big-container {
+  @media (max-width: 768px) {
+    .signup form{
         width: 80%;
-        height:auto;
+        height: 50%;
+        background-color: azure;
+        border-radius: 5px;
+        border: solid 1px #000;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centering form elements horizontally */
+        
     }
-}
+    .signup form h2{
+        margin: 30px 10px;
+    
+    }
+    /* .signup form input{
+        width: 70%;
+        height: 8%;
+        border-radius: 5px;
+        border: solid 1px #000;
+        margin-bottom: 10px;
+        background-color: #f5f5f5;
+        border: 1px solid #707070; 
+        padding: 5px;
+    }
+    .signup form input:focus {
+        outline: none;
+    }
+    
+    .signup form button {
+        margin:6vh 0 4vh 0;
+        padding: 10px 10px ;
+        width: 70%;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 800;
+        cursor: pointer;
+        font-size: 20px;
+        background-color:rgb(240, 240, 35);
+        border-radius: 5px;
+        border: none;
+        color: #000;
+        
+    }
+    .password-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 70%;
+        height: 8%;
+    }
+    
+    .password-container input {
+        height: 12%; 
+        font-size: 16px; 
+      }
+    
+      .signup form button:hover{
+        background-color:rgb(255, 255, 21);
+      }
+      .lacc{
+        margin-left: 10px;
+        font-size: 17px;
+        font-weight: 600;
+        text-decoration: none;
+        font-family: 'Nunito', sans-serif;
+      } */
+  }

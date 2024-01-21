@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import './signup.css'; 
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Userprofile = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordVerify, setPasswordVerify] = useState('');
 
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  const [showPassword, setShowPassword] = useState(false);
+ 
+ 
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +30,7 @@ const Userprofile = () => {
           'Content-Type': 'application/json',
         },
         credentials: 'include', // Include credentials (cookies)
-        body: JSON.stringify({ email, password, passwordVerify }),
+        body: JSON.stringify({ email, password }),
       });
 
       if (response.ok) {
@@ -50,8 +58,8 @@ const Userprofile = () => {
 
   return (
     <div>
-      <div className="userProfile">
-        <div className="big-container">
+      <div className="signup">
+        {/* <div className="big-container"> */}
           <form onSubmit={handleSubmit}>
             <h2>Sign Up </h2>
             <input
@@ -60,12 +68,23 @@ const Userprofile = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+          <div style={{ position: 'relative', width: '70%' }}>
+  <input
+    type={showPassword ? 'text' : 'password'}
+    placeholder="Password"
+    style={{ height: 'auto', width: '100%', fontSize: '16px' }}
+    value={password}
+    onChange={handlePasswordChange}
+  />
+
+  <div
+    className="Password-icon"
+    onClick={() => setShowPassword(!showPassword)}
+    style={{ position: 'absolute', top: '40%', transform: 'translateY(-50%)', right: '5px' }}
+  >
+    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+  </div>
+</div>
            
             <button type="submit">Continue</button>
             <p>By continuing, you agree to our User Agreement and Privacy Policy.</p>
@@ -74,7 +93,7 @@ const Userprofile = () => {
             <p>Already have an account?</p>
             <h3><Link to='/login'>Log In Here</Link></h3>
           </form>
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );
