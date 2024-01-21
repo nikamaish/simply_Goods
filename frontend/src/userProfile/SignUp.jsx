@@ -14,13 +14,9 @@ const Userprofile = () => {
     e.preventDefault();
 
     try {
-      if (password !== passwordVerify) {
-        setErrorMessage('Passwords do not match.');
-        return;
-      }
+      
 
       const response = await fetch('http://localhost:5000/auth/register', {
-      // const response = await fetch('https://gm-backend-qfd5.onrender.com/auth/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -70,12 +66,7 @@ const Userprofile = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <input
-              type="password"
-              placeholder="Verify Password"
-              value={passwordVerify}
-              onChange={(e) => setPasswordVerify(e.target.value)}
-            />
+           
             <button type="submit">Continue</button>
             <p>By continuing, you agree to our User Agreement and Privacy Policy.</p>
             {successMessage && <p className="success-message">{successMessage}</p>}

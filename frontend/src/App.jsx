@@ -9,7 +9,7 @@ import Login from './userProfile/Login';
 import MainPage from './mainpage/MainPage';
 import MainProduct from './mainProduct/MainProduct';
 import products from './categoriesData/CategoriesData.jsx';
-import { AuthProvider } from './authContext/AuthContext.js';
+import { AuthProvider } from './AuthContext/AuthContext.js';
 import CustomerLogout from './userProfile/CustomerLogout.jsx';
 
 

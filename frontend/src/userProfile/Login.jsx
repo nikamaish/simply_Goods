@@ -1,7 +1,7 @@
 // Login.js
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../authContext/AuthContext';
+import { useAuth } from '../AuthContext/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -14,8 +14,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      // const apiUrl = 'https://gm-backend-qfd5.onrender.com/auth';
-      const apiUrl= 'http://localhost:5000/auth'
+      const apiUrl = 'http://localhost:5000/auth/';
       const response = await fetch(`${apiUrl}/login`, {
         method: 'POST',
         headers: {
@@ -31,9 +30,8 @@ const Login = () => {
         // Set the user in the authentication context upon successful login
         login(data); // Adjust this based on your actual user data structure
 
-        navigate('/');  
         // Redirect to another page upon successful login
-         // Change '/dashboard' to your desired route
+       navigate('/') // Change '/dashboard' to your desired route
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.errorMessage || 'Error logging in');
@@ -67,7 +65,7 @@ const Login = () => {
             <div className='sign-up'>
               <p>Do not have an account?</p>
               <h3>
-                <Link to="/userProfile">Sign Up Here</Link>
+                <Link to="/signup">Sign Up Here</Link>
               </h3>
             </div>
           </form>
