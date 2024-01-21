@@ -1,33 +1,22 @@
+// Login.js
 import React, { useState } from 'react';
-import './signup.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../authContext/AuthContext';
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loginStatus, setLoginStatus] = useState(''); // Added login status state
-  const navigate = useNavigate(); // Corrected usage of useNavigate
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
   const { login } = useAuth();
-
-
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // const apiUrl = 'https://simplygoods-server.onrender.com/auth/login';
-      const apiUrl = 'http://localhost:5000/auth/login'
-      const response = await fetch(apiUrl, {
+      // const apiUrl = 'https://gm-backend-qfd5.onrender.com/auth';
+      const apiUrl= 'http://localhost:5000/auth'
+      const response = await fetch(`${apiUrl}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,59 +26,52 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        // window.location.reload();
-        setLoginStatus('Login successful');
-        // login(data); // Adjust this based on your actual user data structure
-        navigate('/'); // Use navigate for navigation
+        setErrorMessage('');
 
+        // Set the user in the authentication context upon successful login
+        login(data); // Adjust this based on your actual user data structure
 
+        navigate('/');  
+        // Redirect to another page upon successful login
+         // Change '/dashboard' to your desired route
       } else {
         const errorData = await response.json();
-        // Write 'login fail' or handle the error as needed
-        console.log('Login failed');
-        setLoginStatus('Login failed');
+        setErrorMessage(errorData.errorMessage || 'Error logging in');
       }
     } catch (error) {
-      console.error(error);
+      console.error('Error:', error);
+      setErrorMessage('An unexpected error occurred.');
     }
   };
 
   return (
     <div>
-      <div className="signup">
-        <form onSubmit={handleSubmit}>
-          <h2>Log In</h2>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <div style={{ position: 'relative', width: '70%' }}>
+      <div className="userProfile">
+        <div className="big-container">
+          <form onSubmit={handleSubmit}>
+            <h2>Log In </h2>
             <input
-              type={showPassword ? 'text' : 'password'}
-              placeholder="Password"
-              style={{ height: 'auto', width: '100%', fontSize: '16px' }}
-              value={password}
-              onChange={handlePasswordChange}
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-
-            <div
-              className="Password-icon"
-              onClick={() => setShowPassword(!showPassword)}
-              style={{ position: 'absolute', top: '40%', transform: 'translateY(-50%)', right: '5px' }}
-            >
-              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Continue</button>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <div className='sign-up'>
+              <p>Do not have an account?</p>
+              <h3>
+                <Link to="/userProfile">Sign Up Here</Link>
+              </h3>
             </div>
-          </div>
-          <button type="submit">Continue</button>
-          <p>
-            Do not have an account?
-            <Link to="/signup" className="lacc">
-              Sign Up Here
-            </Link>
-          </p>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

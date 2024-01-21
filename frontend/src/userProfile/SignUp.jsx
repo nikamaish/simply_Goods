@@ -1,106 +1,92 @@
 import React, { useState } from 'react';
-import './signup.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate } from 'react-router-dom';
+import './signup.css'; 
+import { Link } from 'react-router-dom';
 
-const Login = () => {
-  // const [name, setName] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+const Userprofile = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loginStatus, setLoginStatus] = useState(''); // Added login status state
-  const navigate = useNavigate(); // Corrected usage of useNavigate
+  const [passwordVerify, setPasswordVerify] = useState('');
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // const apiUrl = 'https://simplygoods-server.onrender.com/auth/register';
+      if (password !== passwordVerify) {
+        setErrorMessage('Passwords do not match.');
+        return;
+      }
 
-      const apiUrl = 'http://localhost:5000/auth/register'
-      const response = await fetch( apiUrl, {
+      const response = await fetch('http://localhost:5000/auth/register', {
+      // const response = await fetch('https://gm-backend-qfd5.onrender.com/auth/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({  email, password }),
+        credentials: 'include', // Include credentials (cookies)
+        body: JSON.stringify({ email, password, passwordVerify }),
       });
 
       if (response.ok) {
-        const data = await response.json();
-        navigate('/'); // Use navigate for navigation
-        window.location.reload();
-        setLoginStatus('Login successful');
+        try {
+          const data = await response.json();
+          setSuccessMessage(data.message || 'User profile created successfully!');
+          setErrorMessage('');
+          window.location.reload();
+        } catch (error) {
+          console.error('Error parsing JSON:', error);
+          setErrorMessage('Invalid JSON response from the server.');
+          setSuccessMessage('');
+        }
       } else {
-        const errorData = await response.json();
-        // Write 'login fail' or handle the error as needed
-        console.log('Login failed');
-        setLoginStatus('Login failed');
+        const data = await response.text(); // Get the response as text
+        setErrorMessage(data || 'Error in creating user profile');
+        setSuccessMessage('');
       }
     } catch (error) {
-      console.error(error);
+      console.error('Error:', error);
+      setErrorMessage('An unexpected error occurred.');
+      setSuccessMessage('');
     }
   };
 
   return (
     <div>
-      <div className="signup">
-        <form onSubmit={handleSubmit}>
-          <h2>Sign Up</h2>
-          {/* <input
-            type="text"
-            placeholder="Full Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          /> */}
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-
-          
-<div style={{ position: 'relative', width: '70%' }}>
-  <input
-    type={showPassword ? 'text' : 'password'}
-    placeholder="Password"
-    style={{ height: 'auto', width: '100%', fontSize: '16px' }}
-    value={password}
-    onChange={handlePasswordChange}
-  />
-
-  <div
-    className="Password-icon"
-    onClick={() => setShowPassword(!showPassword)}
-    style={{ position: 'absolute', top: '40%', transform: 'translateY(-50%)', right: '5px' }}
-  >
-    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-  </div>
-</div>
-
-          
-
-
-
-          <button type="submit">Continue</button>
-          <p>
-            Already Account?
-            <Link to="/login" className="lacc">
-              Login Here
-            </Link>
-          </p>
-        </form>
+      <div className="userProfile">
+        <div className="big-container">
+          <form onSubmit={handleSubmit}>
+            <h2>Sign Up </h2>
+            <input
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Verify Password"
+              value={passwordVerify}
+              onChange={(e) => setPasswordVerify(e.target.value)}
+            />
+            <button type="submit">Continue</button>
+            <p>By continuing, you agree to our User Agreement and Privacy Policy.</p>
+            {successMessage && <p className="success-message">{successMessage}</p>}
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <p>Already have an account?</p>
+            <h3><Link to='/login'>Log In Here</Link></h3>
+          </form>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Userprofile;
