@@ -91,11 +91,10 @@ const Login = () => {
             {successMessage && <p className="success-message">{successMessage}</p>}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             
-              <p style={{marginTop:'7vh'}}>Do not have an account?</p>
-              <h3 >
-                <Link to="/signup" style={{textDecoration:'none'}}>Sign Up Here</Link>
-              </h3>
-          
+              <p style={{marginTop:'5vh', fontSize: '20px'}}>Do not have an account?
+
+                <Link to="/signup" style={{textDecoration:'none', fontSize: '20px', marginLeft:'10px' }}>Sign Up Here</Link>
+              </p>
 
           </form>
       </div>

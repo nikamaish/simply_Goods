@@ -81,12 +81,11 @@ const Userprofile = () => {
             By continuing, you agree to our User Agreement and Privacy Policy.
           </p>
           {errorMessage && <p className="error-message" style={{textAlign:'center'}}>{errorMessage}</p>}
-          <p>Already have an account?</p>
-          <h3>
-            <Link to="/login" style={{ textDecoration: 'none', fontSize: '25px' }}>
+          <p style={{ fontSize: '20px'}}>Already have an account? 
+            <Link to="/login" style={{ textDecoration: 'none', fontSize: '20px', marginLeft:'10px' }}>
               Log In Here
             </Link>
-          </h3>
+          </p>
         </form>
       </div>
     </div>
