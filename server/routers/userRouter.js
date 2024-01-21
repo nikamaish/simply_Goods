@@ -27,30 +27,31 @@ const sessionKey = generateRandomString(32); // You can adjust the length based 
 
 
 
-router.use(
-    session({
-      secret: process.env.SECRET_KEY,
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        secure: process.env.NODE_ENV === 'production',
-        // when we hoste the app on heroku, we need to set secure to true
-        httpOnly: true,
-        // what is httpOnly is that it is a security feature that prevents client side JavaScript from accessing the cookie. So if you are using React or Angular or Vue or any other front end framework, you will not be able to access the cookie from the front end. So this is a security feature that prevents cross-site scripting attacks.
+// router.use(
+//     session({
+//       secret: process.env.SECRET_KEY,
+//       resave: false,
+//       saveUninitialized: false,
+//       cookie: {
+//         // secure: process.env.NODE_ENV === 'production',
+//         secure: false,
+//         // when we host the app on heroku, we need to set secure to true
+//         httpOnly: true,
+//         // what is httpOnly is that it is a security feature that prevents client side JavaScript from accessing the cookie. So if you are using React or Angular or Vue or any other front end framework, you will not be able to access the cookie from the front end. So this is a security feature that prevents cross-site scripting attacks.
 
-        sameSite: 'none',
-        // sameSite is a security feature that prevents the browser from sending the cookie along with cross-site requests. So if you are on a website and that website is trying to make a request to your server, the browser will not send the cookie along with that request. So this is a security feature that prevents cross-site request forgery attacks.
+//         sameSite: 'none',
+//         // sameSite is a security feature that prevents the browser from sending the cookie along with cross-site requests. So if you are on a website and that website is trying to make a request to your server, the browser will not send the cookie along with that request. So this is a security feature that prevents cross-site request forgery attacks.
 
-        // but then how server store user credentials if we set sameSite to none? 
-        // it is done by using a different cookie called csrf token. So what we do is that we set the sameSite to none and then we set another cookie called csrf token and we set the sameSite to strict for that cookie. So what happens is that the browser will send the csrf token cookie along with cross-site requests but it will not send the session cookie along with cross-site requests. So this is how we can store user credentials in the session and still prevent cross-site request forgery attacks.
+//         // but then how server store user credentials if we set sameSite to none? 
+//         // it is done by using a different cookie called csrf token. So what we do is that we set the sameSite to none and then we set another cookie called csrf token and we set the sameSite to strict for that cookie. So what happens is that the browser will send the csrf token cookie along with cross-site requests but it will not send the session cookie along with cross-site requests. So this is how we can store user credentials in the session and still prevent cross-site request forgery attacks.
 
-        maxAge: 24 * 60 * 60 * 1000, // 1 day
-        // what is maxAge is that it is the time in milliseconds that the cookie will expire after
+//         maxAge: 24 * 60 * 60 * 1000, // 1 day
+//         // what is maxAge is that it is the time in milliseconds that the cookie will expire after
 
-      },
-      store: new MongoStore({ url: process.env.MDB_URL }),
-    })
-  );
+//       },
+//       store: new MongoStore({ url: process.env.MDB_URL }),
+//     })
+//   );
   
 
   router.post('/register', async (req, res) => {
@@ -66,13 +67,6 @@ router.use(
         .status(400)
         .json({ errorMessage: 'Please enter a password of at least 6 characters.' });
 
-    // if (password !== passwordConfirm) {
-    //   return res
-    //     .status(400)
-    //     .json({ errorMessage: 'Please enter the same password twice.' });
-    // }
-
-  
       const salt = await bcrypt.genSalt();
       const passwordHash = await bcrypt.hash(password, salt);
   
@@ -91,14 +85,16 @@ router.use(
   },process.env.JWT_SECRET);
 
   console.log(token);  
+
+
   res.cookie("token",token,{
     httpOnly:true,
-    secure:process.env.NODE_ENV === 'production',
+    // secure:process.env.NODE_ENV === 'production',
+    secure:false,
     sameSite:"none"
 });
-
   
-  req.session.user = savedCustomer._id;
+  // req.cookie.user = savedCustomer._id;
 // what we did over here is that we are storing the user id in the session and how it is different than above is that we are not storing the whole user object in the session, we are just storing the user id in the session and we are going to use that user id to fetch the user object from the database whenever we need it. So this is a more secure way of storing the user in the session.
 
       res.status(201).json({message: 'Customer registered successfully',savedCustomer});
@@ -130,6 +126,7 @@ router.use(
       if (!existingCustomer){
         return res.status(401).json({errorMessage:"Wrong email or password"});
       }
+  
 
       const passwordCorrect = await bcrypt.compare(password, existingCustomer.passwordHash);
 
@@ -138,20 +135,23 @@ router.use(
       }
 
       // req.session.user = { _id: existingCustomer._id, fullname: existingCustomer.fullname, email: existingCustomer.email };
-
-      req.session.user = { _id: existingCustomer._id, email: existingCustomer.email };
+     // req.session.user = { _id: existingCustomer._id, email: existingCustomer.email };
 
     //   why we need to do it different bcz in register we only save the user id in the session but in login we are saving the whole user object in the session. So this is how we can store the user in the session.
     // because we are going to use the user object in the session to display the user's name and email in the navbar. So this is why we need to store the whole user object in the session.
     // it means when i login then then my name will be there in navbar and when i logout then my name will not be there in navbar is it right? yes
 
+   
+   
     const token = jwt.sign({
       user:existingCustomer._id
   },process.env.JWT_SECRET);
 
+ 
   res.cookie("token",token,{
     httpOnly:true,
-    secure:process.env.NODE_ENV === 'production',
+    // secure:process.env.NODE_ENV === 'production',
+    secure:false,
     sameSite:"none"
 });
   
@@ -173,7 +173,7 @@ res.status(200).json({ message: "Customer logged in successfully", user: { id: e
   router.get('/logout', (req, res) => {
 
     try {
-      req.session = null; // Clear the session data
+      //  req.session = null; // Clear the session data
 
       res.cookie('token', '', {
           httpOnly: true,
@@ -182,7 +182,7 @@ res.status(200).json({ message: "Customer logged in successfully", user: { id: e
       }).send();
 
       res.status(200).json({ message: 'Logout successful' });
-      console.log('User session cleared');
+      // console.log('User session cleared');
   }
   
   
