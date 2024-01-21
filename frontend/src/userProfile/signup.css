@@ -50,10 +50,11 @@
     font-weight: 800;
     cursor: pointer;
     font-size: 20px;
-    background-color:rgb(240, 240, 35);
+    /* background-color:rgb(240, 240, 35); */
+    background-color: #0B60B0;
     border-radius: 5px;
     border: none;
-    color: #000;
+    color: #fff;
     
 }
 .password-container{
@@ -70,7 +71,8 @@
   }
 
   .signup form button:hover{
-    background-color:rgb(255, 255, 21);
+    /* background-color:rgb(255, 255, 21); */
+    background-color: #075299;
   }
   .lacc{
     margin-left: 10px;

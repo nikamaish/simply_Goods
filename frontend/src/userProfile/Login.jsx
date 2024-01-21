@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import './signup.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../authContext/AuthContext';
+import { useAuth0 } from '@auth0/auth0-react';  // Import useAuth0
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState(''); // Added login status state
   const navigate = useNavigate(); // Corrected usage of useNavigate
-const { login } = useAuth();
+  const { login } = useAuth();
+
+    // Use useAuth0 hook to get authentication methods and user information
+    const { loginWithPopup, loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,6 +73,11 @@ const { login } = useAuth();
               Sign Up Here
             </Link>
           </p>
+          <p>OR</p>
+          <ul style={{listStyle:'none'}}>
+          <li><button onClick={loginWithRedirect} style={{width:'200px', marginTop:'-5px', marginRight:'30px'}}>Redirect Login</button></li>
+        {/* <li><button onClick={logout}>logout</button></li> */}
+        </ul>
         </form>
       </div>
     </div>
