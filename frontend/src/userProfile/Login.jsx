@@ -10,6 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
   const { login } = useAuth();
 
@@ -36,27 +37,28 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setErrorMessage('Login successful');
+        setErrorMessage('');
+        setSuccessMessage(data.message || 'Login Successful!')
 
         // Set the user in the authentication context upon successful login
         login(data); // Adjust this based on your actual user data structure
-
-        // Redirect to another page upon successful login
        navigate('/') // Change '/dashboard' to your desired route
+
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.errorMessage || 'Error logging in');
+        setSuccessMessage('');
       }
     } catch (error) {
       console.error('Error:', error);
       setErrorMessage('An unexpected error occurred.');
+      setSuccessMessage('');
     }
   };
 
   return (
     <div>
       <div className="signup">
-        {/* <div className="big-container"> */}
           <form onSubmit={handleSubmit}>
             <h2>Log In </h2>
             <input
@@ -65,22 +67,37 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div style={{ position: 'relative', width: '70%' }}>
+
+        <input
+        type={showPassword ? 'text' : 'password'}
+        placeholder="Password"
+        style={{ height: 'auto', width: '100%', fontSize: '16px' }}
+        value={password}
+        onChange={handlePasswordChange}
+        />
+
+  <div
+    className="Password-icon"
+    onClick={() => setShowPassword(!showPassword)}
+    style={{ position: 'absolute', top: '40%', transform: 'translateY(-50%)', right: '5px' }}
+  >
+    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+  </div>
+</div>
+
+
             <button type="submit">Continue</button>
-            {/* {errorMessage && <p className="error-message">{errorMessage}</p>} */}
-            {/* <div className='sign-up'> */}
-              <p>Do not have an account?</p>
-              <h3>
-                <Link to="/signup">Sign Up Here</Link>
+            {successMessage && <p className="success-message">{successMessage}</p>}
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            
+              <p style={{marginTop:'7vh'}}>Do not have an account?</p>
+              <h3 >
+                <Link to="/signup" style={{textDecoration:'none'}}>Sign Up Here</Link>
               </h3>
-            {/* </div> */}
+          
+
           </form>
-        {/* </div> */}
       </div>
     </div>
   );

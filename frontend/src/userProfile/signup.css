@@ -13,7 +13,7 @@
 }
 .signup form{
     width: 30%;
-    height: 60%;
+    height: 70%;
     background-color: azure;
     border-radius: 5px;
     border: solid 1px #000;
@@ -26,6 +26,9 @@
 .signup form h2{
     margin: 30px 10px;
 
+}
+.signup  p{
+    font-size: 20px;
 }
 .signup form input{
     width: 70%;
@@ -50,10 +53,11 @@
     font-weight: 800;
     cursor: pointer;
     font-size: 20px;
-    background-color:rgb(240, 240, 35);
+    /* background-color:rgb(240, 240, 35); */
+    background-color: #0B60B0;
     border-radius: 5px;
     border: none;
-    color: #000;
+    color: #fff;
     
 }
 .password-container{
@@ -70,14 +74,23 @@
   }
 
   .signup form button:hover{
-    background-color:rgb(255, 255, 21);
-  }
+    /* background-color:rgb(255, 255, 21); */
+    background-color: #076dcd;
+}
   .lacc{
     margin-left: 10px;
     font-size: 17px;
     font-weight: 600;
     text-decoration: none;
     font-family: 'Nunito', sans-serif;
+  }
+
+  .success-message{
+    color:green;
+  }
+  .error-message{
+    font-size: 18px;
+    color: rgb(250, 2, 2);
   }
 
   @media (max-width: 768px) {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './signup.css'; 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,6 +13,7 @@ const Userprofile = () => {
 
   const [showPassword, setShowPassword] = useState(false);
  
+  const navigate = useNavigate();
  
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
@@ -22,8 +23,6 @@ const Userprofile = () => {
     e.preventDefault();
 
     try {
-      
-
       const response = await fetch('http://localhost:5000/auth/register', {
         method: 'POST',
         headers: {
@@ -38,7 +37,7 @@ const Userprofile = () => {
           const data = await response.json();
           setSuccessMessage(data.message || 'User profile created successfully!');
           setErrorMessage('');
-          window.location.reload();
+          navigate('/login')
         } catch (error) {
           console.error('Error parsing JSON:', error);
           setErrorMessage('Invalid JSON response from the server.');
@@ -46,7 +45,7 @@ const Userprofile = () => {
         }
       } else {
         const data = await response.text(); // Get the response as text
-        setErrorMessage(data || 'Error in creating user profile');
+        setErrorMessage(data.message || 'Error in creating user profile');
         setSuccessMessage('');
       }
     } catch (error) {
@@ -87,13 +86,13 @@ const Userprofile = () => {
 </div>
            
             <button type="submit">Continue</button>
-            <p>By continuing, you agree to our User Agreement and Privacy Policy.</p>
+            <p style={{padding:'10px', textAlign:'center', fontSize:'15px'}}>By continuing, you agree to our User Agreement and Privacy Policy.</p>
             {successMessage && <p className="success-message">{successMessage}</p>}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <p>Already have an account?</p>
-            <h3><Link to='/login'>Log In Here</Link></h3>
+            <h3 ><Link to='/login' style={{textDecoration:'none', fontSize:'25px'}}>Log In Here</Link></h3>
           </form>
-        {/* </div> */}
+        
       </div>
     </div>
   );
