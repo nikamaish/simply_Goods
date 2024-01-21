@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import './signup.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../authContext/AuthContext';
-import { useAuth0 } from '@auth0/auth0-react';  // Import useAuth0
-
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState(''); // Added login status state
   const navigate = useNavigate(); // Corrected usage of useNavigate
   const { login } = useAuth();
 
-    // Use useAuth0 hook to get authentication methods and user information
-    const { loginWithPopup, loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
+
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
 
 
   const handleSubmit = async (e) => {
@@ -22,7 +27,7 @@ const Login = () => {
     try {
       // const apiUrl = 'https://simplygoods-server.onrender.com/auth/login';
       const apiUrl = 'http://localhost:5000/auth/login'
-      const response = await fetch( apiUrl, {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -60,12 +65,23 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div style={{ position: 'relative', width: '70%' }}>
+            <input
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              style={{ height: 'auto', width: '100%', fontSize: '16px' }}
+              value={password}
+              onChange={handlePasswordChange}
+            />
+
+            <div
+              className="Password-icon"
+              onClick={() => setShowPassword(!showPassword)}
+              style={{ position: 'absolute', top: '40%', transform: 'translateY(-50%)', right: '5px' }}
+            >
+              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            </div>
+          </div>
           <button type="submit">Continue</button>
           <p>
             Do not have an account?
@@ -73,11 +89,6 @@ const Login = () => {
               Sign Up Here
             </Link>
           </p>
-          <p>OR</p>
-          <ul style={{listStyle:'none'}}>
-          <li><button onClick={loginWithRedirect} style={{width:'200px', marginTop:'-5px', marginRight:'30px'}}>Redirect Login</button></li>
-        {/* <li><button onClick={logout}>logout</button></li> */}
-        </ul>
         </form>
       </div>
     </div>
