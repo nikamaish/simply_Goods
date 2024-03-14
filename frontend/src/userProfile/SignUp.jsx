@@ -19,7 +19,7 @@ const Userprofile = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://simplygoods-server.onrender.com/auth/register', {
+      const response = await fetch('https://simply-goods-server.vercel.app/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ const Userprofile = () => {
         try {
           const data = await response.json();
           setErrorMessage('');
-          navigate('/login');
+          navigate('/');
         } catch (error) {
           console.error('Error parsing JSON:', error);
           setErrorMessage('Invalid JSON response from the server.');

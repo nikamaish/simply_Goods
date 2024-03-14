@@ -11,7 +11,7 @@ const CustomerLogout = () => {
     const handleLogout = async () => {
       try {
         // const apiUrl = 'https://gm-backend-qfd5.onrender.com/auth';
-        const apiUrl = 'https://simplygoods-server.onrender.com/auth';
+        const apiUrl = 'https://simply-goods-server.vercel.app/auth';
         const response = await fetch(`${apiUrl}/logout`, {
           method: 'GET',
           credentials: 'include', // Include credentials for sessions/cookies

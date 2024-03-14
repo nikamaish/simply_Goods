@@ -26,7 +26,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const apiUrl = 'https://simplygoods-server.onrender.com/auth';
+      const apiUrl = 'https://simply-goods-server.vercel.app/auth';
       const response = await fetch(`${apiUrl}/login`, {
         method: 'POST',
         headers: {
