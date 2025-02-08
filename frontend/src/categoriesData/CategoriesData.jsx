@@ -75,6 +75,8 @@ const products = [
   {id:5,  name: 'Acer Advanced I Series HD  Smart LED  TV', price: '179', img: 'https://m.media-amazon.com/images/I/511DmhAgHAL._SX679_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },   
   {id:5,  name: 'iFFALCON HD Ready Smart Android LED TV ', price: '179', img: 'https://m.media-amazon.com/images/I/416UDPTvohL._SY300_SX300_QL70_FMwebp_.jpg', stars: 3, off: '10% off', cancelPrice: '199', colorType:'Blue,Lithium Polymer' },
 
-];
+
+
+]
 
 export default products;

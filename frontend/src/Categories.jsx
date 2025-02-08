@@ -1,19 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import './categories.css';
 import CategoriesCard from '../categoryCard/CategoriesCard';
-import { setVisibleCards, setCurrentPosition, setShowMoreClicked } from './categoriesSlice';
+import { 
+  setVisibleCards, 
+  setCurrentPosition, 
+  setShowMoreClicked, 
+  setElectronics 
+} from './categoriesSlice';
 
 const Categories = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { electronics, visibleCards, totalCards, currentPosition, showMoreClicked } = useSelector(state => state.categories);
+  const { 
+    electronics, 
+    visibleCards, 
+    totalCards, 
+    currentPosition, 
+    showMoreClicked 
+  } = useSelector(state => state.categories);
+
+  useEffect(() => {
+    // Fetch electronics data and dispatch to Redux
+    // This is just an example, replace with your actual data fetching logic
+    const fetchElectronics = async () => {
+      const data = await fetch('/api/electronics').then(res => res.json());
+      dispatch(setElectronics(data));
+    };
+    fetchElectronics();
+  }, [dispatch]);
 
   const handleProductClick = (index) => {
-    navigate(`/products/${index}`);
+    // navigate(`/products/${index}`);
   };
 
   const slideCards = (direction, category) => {
@@ -55,7 +76,7 @@ const Categories = () => {
   };
 
   const renderCategoriesCard = (products) => {
-    return products.map((product, index) => (
+    return products.slice(0, visibleCards.electronics).map((product, index) => (
       <CategoriesCard key={index} product={product} onClick={() => handleProductClick(index)} />
     ));
   };

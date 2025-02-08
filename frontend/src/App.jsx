@@ -11,6 +11,7 @@ import MainProduct from './mainProduct/MainProduct';
 import products from './categoriesData/CategoriesData.jsx';
 import { AuthProvider } from './AuthContext/AuthContext.js';
 import CustomerLogout from './userProfile/CustomerLogout.jsx';
+import { Provider } from 'react-redux';
 
 
 
@@ -25,6 +26,7 @@ const App = () => {
     
 
 <AuthProvider>
+  <Provider>
       <Router>
       <div>
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
@@ -45,6 +47,7 @@ const App = () => {
         </Routes>
         </div>
       </Router>
+      </Provider>
       </AuthProvider>
       
   
